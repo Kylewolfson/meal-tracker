@@ -1,0 +1,11 @@
+npm init
+
+npm install
+
+npm install bower -g
+bower init
+
+bower install bootstrap --save
+gulp bower
+
+gulp serve

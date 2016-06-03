@@ -1,0 +1,28 @@
+{
+  "name": "bower install jquery --save",
+  "description": "bower install bootstrap --save",
+  "main": "bower install moment --save",
+  "authors": [
+    "npm install gulp-clean --save-dev"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "npm",
+    "install",
+    "bower-files",
+    "--save-dev"
+  ],
+  "homepage": "https://github.com/ilesikar/simon-js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6",
+    "moment": "^2.13.0"
+  }
+}
