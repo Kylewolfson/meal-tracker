@@ -1,30 +1,30 @@
 import { Component } from 'angular2/core';
+import { MealListComponent } from './meal-list.component'
+import { Meal } from './meal.model'
 
 @Component({
   selector: 'my-app',
+  directives: [MealListComponent],
   template: `
     <div class="container">
       <h1>Meal tracker!</h1>
-      <h3>{{ meal.description }}</h3>
+      <meal-list [mealList] = "meals"
+        (onMealSelect)="mealWasSelected($event)">
+      </meal-list>
     </div>
   `
 })
 
 export class AppComponent {
-  public renames: Rename[];  // Task[] (or Array<Task>) identifies tasks as an array of Task objects
+  public meals: Meal[];
   constructor(){
-    this.renames = [
-      new Rename("Create To-Do List app.", 0),
-      new Rename("Learn Kung Fu.", 1),
-      new Rename("Rewatch all the Lord of the Rings movies.", 2),
-      new Rename("Do the laundry.", 3)
+    this.meals = [
+      new Meal("Bacon and Eggs", "Part of a healthy breakfast", 500),
+      new Meal("Pho", "I can't find the proper accent mark", 450),
+      new Meal("Burrito", "It was huge!", 800),
     ];
   }
-}
-
-export class Rename {
-  public done: boolean = false;
-  constructor(public description: string, public id: number) {
-
+  mealWasSelected(clickedMeal: Meal): void {
+    console.log(clickedMeal);
   }
 }
