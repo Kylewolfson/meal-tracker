@@ -3,13 +3,14 @@ import { Meal } from './meal.model';
 import { MealDisplayComponent } from './meal-display.component';
 import { NewMealComponent } from './new-meal.component';
 import { CaloriePipe } from './calories.pipe';
+import { EditMealDetailsComponent } from './edit-meal.component';
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
   outputs: ['onMealSelect'],
   pipes: [CaloriePipe],
-  directives: [MealDisplayComponent, NewMealComponent],
+  directives: [MealDisplayComponent, NewMealComponent, EditMealDetailsComponent],
   template: `
   <select (change)="onChange($event.target.value)">
     <option value="All"> Show All</option>
@@ -21,8 +22,8 @@ import { CaloriePipe } from './calories.pipe';
       [class.selected]="currentMeal === selectedMeal"
       [meal]="currentMeal">
     </meal-display>
-    <edit-meal-details *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal-details>
     <new-meal (onSubmitNewMeal)="createMeal($event)"></new-meal>
+    <edit-meal *ngIf="selectedMeal" [meal]="selectedMeal"></edit-meal>
     `
 })
 export class MealListComponent {
