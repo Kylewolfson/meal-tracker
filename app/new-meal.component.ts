@@ -16,17 +16,23 @@ import { MealListComponent } from './meal-list.component';
   `
 })
 export class NewMealComponent{
-  public onSubmitNewMeal: EventEmitter<Array<Object>>;
-    constructor(){
-      this.onSubmitNewMeal = new EventEmitter();
+  public onSubmitNewMeal: EventEmitter<Meal>;
+  constructor(){
+    this.onSubmitNewMeal = new EventEmitter();
+  }
+  buildMealArray(foodInput: HTMLInputElement, descriptionInput: HTMLInputElement, calorieInput: HTMLInputElement){
+    // var mealArray = [];
+    // mealArray.push(foodInput.value, descriptionInput.value, parseInt(calorieInput.value));
+    if (foodInput.value && calorieInput.value){
+      var newMeal = new Meal(foodInput.value, descriptionInput.value, parseInt(calorieInput.value));
+    } else {
+      alert("Meal name and calories must be entered");
     }
-    buildMealArray(foodInput: HTMLInputElement, descriptionInput: HTMLInputElement, calorieInput: HTMLInputElement){
-      var mealArray = [];
-      mealArray.push(foodInput.value, descriptionInput.value, parseInt(calorieInput.value));
-      this.onSubmitNewMeal.emit(mealArray);
-      foodInput.value="";
-      descriptionInput.value="";
-      calorieInput.value="";
-    }
+
+    this.onSubmitNewMeal.emit(newMeal);
+    foodInput.value="";
+    descriptionInput.value="";
+    calorieInput.value="";
+  }
 
 }

@@ -38,15 +38,8 @@ export class MealListComponent {
     this.selectedMeal = clickedMeal;
     this.onMealSelect.emit(clickedMeal);
   }
-  createMeal(mealArray): void{
-    if (mealArray[0] && mealArray[2]){
-      var newMeal = new Meal(mealArray[0], mealArray[1], mealArray[2]);
-      this.mealList.push(
-        newMeal
-      );
-    } else {
-      alert("Meal name and calories must be entered")
-    }
+  createMeal(meal): void{
+      this.mealList.push(meal);
   }
   onChange(filterOption){
     this.filterCalories = filterOption;
